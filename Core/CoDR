@@ -1,0 +1,113 @@
+-- Chest on Demand Revamped --
+
+--Version information and legal stuff --
+
+--[[ This is CoDR Version 0.1. This code is made by Xslymaster. You have the right to modify the code as you see fit. You cannot claim this code as your own.
+You may use this in your projects anyway you see fit. You may not re-upload this code.]]
+
+-- local functions --
+
+function roomFront()
+    rs.setOutput("right", true)
+    print("Please go to the front room and retreive or put your stuff in the chest.")
+    end
+
+function roomBack()
+    rs.setOutput("left", true)
+    print("Please go to the back room and retreive or put your stuff in the chest.")
+    end
+
+function roomStorage()
+    rs.setOutput("bottom", true)
+        print("Please go to the storage room and retreive or put your stuff away.")
+    end
+
+function sendBack()
+ print("Select your choice")
+ sendbackBox()
+ local input = read()
+ while true do
+    sleep(0)
+    if input == "1" then
+        rs.setOutput("right", false)
+        sendbackBox()
+    elseif input == "2" then
+        rs.setOutput("left", false)
+        sendbackBox()
+    elseif input == "3" then
+        rs.setOutput("bottom", false)
+        sendbackBox()
+    end
+end 
+
+function sendbackBox()
+ print("___________________________")
+ print("|Your choices             |")
+ print("| [1] Front Room = right  |")
+ print("| [2] Back Room = left    |")
+ print("| [3] Storage = down      |")
+ print("|_________________________|")
+ end
+
+function printLogo()
+    term.clear()
+    term.setCursorPos(1,1)
+    term.setTextColor(colors.lime)
+    print(" ____,  ____,  ____,  ____, ")
+    print("(-/    (-/  \\ (-|  \\ (-|__) ")
+    print(" _\\__,  _\\__/, _|__/  _|  \\,")
+    print("(      (      (      (      ")
+    term.setTextColor(colors.white)
+    end
+
+function printBox()
+    term.clear()
+    term.setCursorPos(1,1)
+    print("_____________________________________________")
+    print("|Please Select a room to send the chest to  |")
+    print("| [1] Front Room = right                    |")
+    print("|                                           |")
+    print("| [2] Back Room = left                      |")
+    print("|                                           |")
+    print("| [3] Storage = down                        |")
+    print("|                                           |")
+    print("| [4] Send Back                             |")
+    print("|                                           |")
+    print("|___________________________________________|")
+ end
+
+function codrExtras()
+    print("Would you like to install CoDRExtras?Y/N")
+    local input = read()
+    if input == "Y" then
+        shell.run("pastebin get dummycode CoDRExtras")
+    elseif input == "N" then
+        print("Thank you for using CoDR")
+    else 
+        print("Input not Recognized")
+
+-- Code --
+
+
+printLogo()
+sleep(1)
+print("Welcome to CoDR or Chest on Demand Revamped")
+sleep(2)
+term.clear()
+printBox()
+local input = read()
+while true do
+    sleep(0)
+    if input == "1" then
+        roomFront()
+        printBox()
+    elseif input == "2" then
+        roomBack()
+        printBox()
+    elseif input == "3" then
+        roomStorage()
+        printBox()
+    elseif input == "4" then
+        sendBack()
+    end
+end
